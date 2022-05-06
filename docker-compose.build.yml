@@ -1,0 +1,33 @@
+services:
+  texlive-image:
+    build:
+      context: .
+      dockerfile: server-ce/Dockerfile-texlive-image
+
+    command: /usr/bin/env python3 -m http.server 80
+    
+    ports:
+      - "1849:80"
+    hostname: image
+    networks:
+      - image-cache
+
+  nekoleaf-base:
+    build:
+      context: .
+      dockerfile: server-ce/Dockerfile-base
+      args:
+        TEXLIVE_MIRROR: http://localhost:1849/tlnet
+      network: host
+
+    image: hykilpikonna/nekoleaf-base:2022.05.05
+  
+  nekoleaf:
+    build: .
+    image: hykilpikonna/nekoleaf:2022.05.05
+    depends_on:
+      - nekoleaf-base
+
+networks:
+  image-cache:
+    driver: bridge

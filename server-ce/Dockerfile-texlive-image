@@ -1,0 +1,17 @@
+FROM python:3.10-alpine
+
+ARG TEXLIVE_MIRROR=http://mirror.ctan.org/systems/texlive/tlnet
+WORKDIR /download
+
+# Download image
+RUN mkdir Images \
+&& cd Images \
+# && wget --version \
+&& wget --no-check-certificate "${TEXLIVE_MIRROR}/../Images/texlive2022.iso" \
+&& cd ..
+
+EXPOSE 80
+
+# Serve HTTP server
+ENTRYPOINT /usr/bin/env python3 -m http.server 80
+

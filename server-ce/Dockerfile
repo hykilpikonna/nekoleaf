@@ -2,7 +2,7 @@
 # Overleaf Community Edition (overleaf/overleaf)
 # ---------------------------------------------
 
-ARG SHARELATEX_BASE_TAG=sharelatex/sharelatex-base:latest
+ARG SHARELATEX_BASE_TAG=hykilpikonna/nekoleaf-base:2022.05.05
 FROM $SHARELATEX_BASE_TAG
 
 WORKDIR /overleaf
