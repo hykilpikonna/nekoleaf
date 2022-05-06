@@ -7,7 +7,7 @@ F=docker-compose.build.yml
 
 # Start image cache server so that you don't have to re-download the image for rebuilding
 # docker-compose build texlive-image
-docker-compose -f $F run texlive-image -d
+docker-compose -f $F up texlive-image -d
 
 # Build base image
 docker-compose -f $F build nekoleaf-base

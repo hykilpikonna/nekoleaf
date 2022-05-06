@@ -23,10 +23,10 @@ services:
     image: hykilpikonna/nekoleaf-base:2022.05.05
   
   nekoleaf:
-    build: .
+    build: 
+      context: .
+      dockerfile: server-ce/Dockerfile
     image: hykilpikonna/nekoleaf:2022.05.05
-    depends_on:
-      - nekoleaf-base
 
 networks:
   image-cache:
