@@ -1,9 +1,37 @@
-version: "2.3"
+
 
 volumes:
   data:
 
 services:
+  proxy:
+    image: nginx
+    volumes:
+    - .:/usr/share/nginx/html
+    ports:
+    - "80"
+
+  web:
+    image: node:16.14.2
+    volumes:
+      - ../../:/overleaf
+    working_dir: /overleaf/services/web
+    entrypoint: npm run start
+    # entrypoint: ping redis
+    environment:
+      - WEB_API_USER=test@example.com
+      - WEB_API_PASSWORD=qwq
+      - LISTEN_ADDRESS=0.0.0.0
+    env_file: docker-compose.common.env
+    expose:
+      - 3000
+    ports:
+      - "3000:3000"
+    extra_hosts:
+      - 'www.overleaf.test:127.0.0.1'
+    depends_on:
+      - redis
+      - mongo
 
   test_unit:
     image: node:16.14.2
@@ -86,9 +114,19 @@ services:
 
   redis:
     image: redis
+    hostname: redis
+    expose:
+      - 6379
+    ports:
+      - "6379:6379"
 
   mongo:
     image: mongo:4.2.15
+    hostname: mongo
+    expose:
+      - 27017
+    ports:
+      - "27017:27017"
 
   ldap:
     restart: always

@@ -1,0 +1,54 @@
+nav.navbar {
+    background: url(/nekoleaf/nav.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.project-list-sidebar, .editor-sidebar::before {
+    background: linear-gradient(to bottom, rgba(83, 129, 196, 0.9), rgba(117, 19, 93, 0.73)), url(/custom-res/wall.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-x: center;
+}
+
+.editor-sidebar::before {
+    height: 100%;
+    width: 100%;
+    content: " ";
+}
+
+body {
+    background: url(/nekoleaf/bg-full.png) no-repeat;
+    background-size: cover;
+    background-position: center;
+
+    #ide-body, .ui-layout-resizer, header.toolbar, div.full-size.pdf, div.toolbar, .editor-sidebar, .vertical-resizable-resizer, .outline-container, .outline-header, .outline-body {
+        background-color: transparent !important;
+    }
+
+    .ace-editor-body.ace-tm {
+        background-color: rgba(255, 255, 255, 0.55);
+    }
+        
+    .ace-editor-body.ace_dark {
+        background-color: transparentize(#282a36, 0.6);
+
+        .ace_gutter {
+            background-color: transparentize(#282a36, 0.8);
+        }
+    }
+
+    .outline-container {
+        .outline-item-link-highlight {
+            background-color: #00000078;
+        }
+
+        .outline-header-expand-collapse-btn:hover {
+            background-color: #00000078;
+        }
+    }
+
+    .pdfjs-viewer {
+        overflow: auto !important;
+    }
+}

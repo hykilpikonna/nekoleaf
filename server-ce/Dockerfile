@@ -69,7 +69,7 @@ ENV SHARELATEX_CONFIG /etc/sharelatex/settings.js
 ENV WEB_API_USER "sharelatex"
 ENV ADMIN_PRIVILEGE_AVAILABLE "true"
 
-ENV SHARELATEX_APP_NAME "Overleaf Community Edition"
+ENV SHARELATEX_APP_NAME "Nekoleaf"
 
 ENV OPTIMISE_PDF "true"
 
